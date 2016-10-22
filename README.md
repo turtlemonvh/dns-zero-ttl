@@ -32,7 +32,11 @@ Also, you should be able to visit consul's web UI by visiting http://localhost:8
 
 ## Experiments
 
-> Coming soon...
+Run the following to test all systems.
+
+```bash
+bash test_lookups.sh
+```
 
 ## Docs
 
