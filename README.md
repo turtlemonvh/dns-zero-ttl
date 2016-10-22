@@ -2,8 +2,7 @@
 
 Consul recommends running with 0 TTL.  However, not all languages and systems behave as expected under 0 TTL.
 
-This is a testbed for characterizing their behavior.
-
+This is a testbed for characterizing that behavior.
 
 ## Testbed setup Instructions
 
@@ -32,4 +31,10 @@ http://web.service.consul:8080
 ## Experiments
 
 > Coming soon...
+
+## Docs
+
+* Consul's DNS interface
+** https://www.consul.io/docs/agent/dns.html
+** https://www.consul.io/docs/agent/options.html#dns_config
 
