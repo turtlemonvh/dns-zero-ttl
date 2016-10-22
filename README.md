@@ -1,6 +1,6 @@
 # Consul DNS Zero TTL Experiment
 
-Consul recommends running with 0 TTL.  However, not all languages and systems behave as expected under 0 TTL.
+Consul recommends running with 0 TTL.  However, not all languages and systems behave the same under 0 TTL.
 
 This is a testbed for characterizing that behavior.
 
@@ -35,6 +35,6 @@ http://web.service.consul:8080
 ## Docs
 
 * Consul's DNS interface
-** https://www.consul.io/docs/agent/dns.html
-** https://www.consul.io/docs/agent/options.html#dns_config
+    * https://www.consul.io/docs/agent/dns.html
+    * https://www.consul.io/docs/agent/options.html#dns_config
 
