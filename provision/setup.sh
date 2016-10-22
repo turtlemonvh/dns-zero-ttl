@@ -2,7 +2,7 @@
 
 # Install base deps
 yum update
-yum install -y curl wget unzip bind-utils
+yum install -y curl wget unzip bind-utils strace iproute
 
 # Installl consul
 cd /tmp/

@@ -23,10 +23,12 @@ python -m SimpleHTTPServer 8080 &
 dig @127.0.0.1 web.service.consul
 dig @127.0.0.1 google.com
 
-# Check that we can get to out fake app server
+# Check that we can get to our fake app server
 http://web.service.consul:8080
 
 ```
+
+Also, you should be able to visit consul's web UI by visiting http://localhost:8500/.  At http://localhost:8500/ui/#/dc1/services you should see both the `web` and `consul` services listed.
 
 ## Experiments
 
