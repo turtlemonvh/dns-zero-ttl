@@ -24,6 +24,7 @@ Vagrant.configure(2) do |config|
 
   # Share additional folders to the guest VM.
   config.vm.synced_folder "consul-conf/", "/etc/consul.d/"
+  config.vm.synced_folder "experiments/", "/home/vagrant/experiments/"
 
   # Install consul
   config.vm.provision "shell", path: "provision/setup.sh"
