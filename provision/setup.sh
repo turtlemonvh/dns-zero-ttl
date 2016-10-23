@@ -4,7 +4,7 @@
 yum update
 yum install -y curl wget unzip bind-utils strace iproute
 
-# Installl consul
+# Install consul
 cd /tmp/
 wget https://releases.hashicorp.com/consul/0.7.0/consul_0.7.0_linux_amd64.zip
 unzip consul_0.7.0_linux_amd64.zip
@@ -32,12 +32,13 @@ wget https://storage.googleapis.com/golang/go$VERSION.$OS-$ARCH.tar.gz
 tar -C /usr/local -xzf go$VERSION.$OS-$ARCH.tar.gz
 export PATH=$PATH:/usr/local/go/bin
 
-# Install sysdig
-cd /tmp/
-curl -s https://s3.amazonaws.com/download.draios.com/stable/install-sysdig | bash
-
-# Update
 cat <<EOF >> /home/vagrant/.bashrc
 export GOPATH=$HOME/work
 export PATH=$PATH:/usr/local/go/bin
 EOF
+
+
+# Install sysdig
+cd /tmp/
+curl -s https://s3.amazonaws.com/download.draios.com/stable/install-sysdig | bash
+

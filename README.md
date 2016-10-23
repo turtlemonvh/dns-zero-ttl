@@ -13,12 +13,15 @@ Make sure you have the latest vagrant installed: https://www.vagrantup.com/downl
 vagrant up
 vagrant ssh
 
+## Window 1
 # Start consul, binding default port for dns
-sudo /usr/local/bin/consul agent -dev -config-dir=/etc/consul.d/ -client 0.0.0.0 -dns-port 53 -recursor 8.8.8.8 &
+sudo /usr/local/bin/consul agent -dev -config-dir=/etc/consul.d/ -client 0.0.0.0 -dns-port 53 -recursor 8.8.8.8
 
+## Window 2
 # Start a simple http server to respond to HTTP requests
-python -m SimpleHTTPServer 8080 &
+python -m SimpleHTTPServer 8080
 
+## Window 3
 # Check that both normal and upstream responses are working
 dig @127.0.0.1 web.service.consul
 dig @127.0.0.1 google.com
@@ -35,8 +38,17 @@ Also, you should be able to visit consul's web UI by visiting http://localhost:8
 Run the following to test all systems.
 
 ```bash
-bash test_lookups.sh
+$ bash test_lookups.sh
+Testing python
+100
+Testing curl
+100
+Testing go; pure go resolver
+200
+Testing go; cgo resolver
+100
 ```
+Currently the only interesting result is that go's default pure go resolver double sends DNS requests.
 
 ## Docs
 
