@@ -32,13 +32,19 @@ wget https://storage.googleapis.com/golang/go$VERSION.$OS-$ARCH.tar.gz
 tar -C /usr/local -xzf go$VERSION.$OS-$ARCH.tar.gz
 export PATH=$PATH:/usr/local/go/bin
 
-cat <<EOF >> /home/vagrant/.bashrc
-export GOPATH=$HOME/work
-export PATH=$PATH:/usr/local/go/bin
-EOF
-
+# Install nodejs
+cd /tmp
+wget https://nodejs.org/dist/v4.6.1/node-v4.6.1-linux-x64.tar.xz
+tar xf node-v4.6.1-linux-x64.tar.xz
+mkdir -p /usr/local/node
+mv node-v4.6.1-linux-x64/* /usr/local/node/
 
 # Install sysdig
 cd /tmp/
 curl -s https://s3.amazonaws.com/download.draios.com/stable/install-sysdig | bash
 
+# Update bashrc
+cat <<EOF >> /home/vagrant/.bashrc
+export GOPATH=\$HOME/work
+export PATH=\$PATH:/usr/local/go/bin:/usr/local/node/bin
+EOF
