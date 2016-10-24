@@ -51,8 +51,14 @@ Testing node
 100
 Testing java
 1
+Testing java; explicit ttl 0
+100
 ```
-Currently the only interesting result is that go's default pure go resolver double sends DNS requests.
+
+Notes:
+
+* go's default pure go resolver double sends DNS requests
+* java [will cache DNS lookups forever by default](http://stackoverflow.com/questions/1256556/any-way-to-make-java-honor-the-dns-caching-timeout-ttl), but you can override this
 
 ## Docs
 

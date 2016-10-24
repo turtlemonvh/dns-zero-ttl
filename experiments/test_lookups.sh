@@ -24,10 +24,13 @@ echo "Testing node"
 strace -f -e poll,select,connect,recvfrom,sendto node test_dns.js 2>&1 | grep '(53)' | grep connect | wc -l
 
 # Trace java
-# More: 
+# More: http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/java-dg-jvm-ttl.html
 if [ ! -e TestDNS.class ]; then 
     echo "Compiling java..."
     javac TestDNS.java
 fi
 echo "Testing java"
 strace -f -e poll,select,connect,recvfrom,sendto java TestDNS 2>&1 | grep '(53)' | grep connect | wc -l
+
+echo "Testing java; explicit ttl 0"
+strace -f -e poll,select,connect,recvfrom,sendto java -Dsun.net.inetaddr.ttl=0 TestDNS 2>&1 | grep '(53)' | grep connect | wc -l
