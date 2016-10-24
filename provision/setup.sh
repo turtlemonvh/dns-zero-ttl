@@ -2,7 +2,7 @@
 
 # Install base deps
 yum update
-yum install -y curl wget unzip bind-utils strace iproute
+yum install -y curl wget unzip bind-utils strace iproute mlocate
 
 # Install consul
 cd /tmp/
@@ -39,6 +39,14 @@ tar xf node-v4.6.1-linux-x64.tar.xz
 mkdir -p /usr/local/node
 mv node-v4.6.1-linux-x64/* /usr/local/node/
 
+# Install java
+cd /tmp
+wget http://download.nextag.com/apache/httpcomponents/httpclient/binary/httpcomponents-client-4.5.2-bin.tar.gz
+mkdir -p /home/vagrant/javaclass
+tar xzvf httpcomponents-client-4.5.2-bin.tar.gz
+mv httpcomponents-client-4.5.2 /home/vagrant/javaclass/httpcomponents-client-4.5.2
+yum install java java-devel
+
 # Install sysdig
 cd /tmp/
 curl -s https://s3.amazonaws.com/download.draios.com/stable/install-sysdig | bash
@@ -47,4 +55,5 @@ curl -s https://s3.amazonaws.com/download.draios.com/stable/install-sysdig | bas
 cat <<EOF >> /home/vagrant/.bashrc
 export GOPATH=\$HOME/work
 export PATH=\$PATH:/usr/local/go/bin:/usr/local/node/bin
+export CLASSPATH=$HOME/experiments:$HOME/javaclass/httpcomponents-client-4.5.2/lib/*:
 EOF

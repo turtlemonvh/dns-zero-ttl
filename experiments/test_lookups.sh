@@ -23,4 +23,11 @@ strace -f -e poll,select,connect,recvfrom,sendto go run test_dns.go 2>&1 | grep 
 echo "Testing node"
 strace -f -e poll,select,connect,recvfrom,sendto node test_dns.js 2>&1 | grep '(53)' | grep connect | wc -l
 
-
+# Trace java
+# More: 
+if [ ! -e TestDNS.class ]; then 
+    echo "Compiling java..."
+    javac TestDNS.java
+fi
+echo "Testing java"
+strace -f -e poll,select,connect,recvfrom,sendto java TestDNS 2>&1 | grep '(53)' | grep connect | wc -l

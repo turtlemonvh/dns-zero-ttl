@@ -49,6 +49,8 @@ Testing go; cgo resolver
 100
 Testing node
 100
+Testing java
+1
 ```
 Currently the only interesting result is that go's default pure go resolver double sends DNS requests.
 
